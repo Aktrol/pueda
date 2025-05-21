@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Valentin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+  body {
+    background: url('https://www.moshimoshi-nippon.jp/wp/wp-content/uploads/2021/03/6771c3ca34d0611061bd9a22698189d9-5.jpg') no-repeat center;
+    background-size: cover;
+    background-position: center 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  #message {
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+    display: none;  /* Lo mantenemos oculto */
+    position: fixed;  /* Fijo sobre la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;  /* Asegura que se muestre por encima de otros elementos */
+    color: white;  /* Asegura que el texto sea visible */
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #message h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  button {
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+</style>
+
+<body>
+  <main>
+    <div id="message">
+      <h1>Siempre supe que dirías que sí <br>♥</h1>
+      <img src="https://i.pinimg.com/originals/5a/96/98/5a9698bf5e591662be47616db01bae32.gif" width="250" alt="Dino Love">
+    </div>
+    <img src="https://i.pinimg.com/originals/2f/1a/b4/2f1ab4adffb51d6f565a2eeaea71cfa9.gif" width="250" alt="Dino Love">
+    <h1>¿Quieres ser mi San Valentín?</h1>
+    <div class="options">
+      <button id="yes">Sí</button>
+      <button id="no">No</button>
+    </div>
+  </main>
+
+  <script>
+    const buttonNo = document.querySelector('#no');
+    const buttonYes = document.querySelector('#yes');
+
+    let fontSize = 2;
+
+    let messages = [
+      '¿Estás segurx?',
+      'Piensalo bien',
+      'Piensalo muy bien',
+      'Piensalo',
+      'Mira el otro botón'
+    ];
+
+    buttonNo.addEventListener('click', () => {
+      fontSize = fontSize + 0.5;
+      buttonYes.style.fontSize = `${fontSize}rem`;
+
+      const indexRandom = Math.floor(Math.random() * messages.length);
+      buttonNo.textContent = messages[indexRandom];
+    });
+
+    buttonYes.addEventListener('click', () => {
+      document.querySelector('#message').style.display = 'flex';  // Muestra el mensaje
+    });
+  </script>
+</body>
+
+</html>
